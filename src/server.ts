@@ -16,7 +16,7 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
   // Filetr image endpoint
   // Displays a simple message to the user
   /**************************************************************************** */
-  app.get("/filterimage", async (req, res) => {
+  app.get("/filteredimage", async (req, res) => {
     const imageUrl = req.query.image_url;
 
     // check if imageUrl is invalid and return a message to the user
@@ -41,7 +41,7 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
   // Displays a simple message to the user to add the correct path in order to filter the image
   app.get("/", async (req, res) => {
     res.send(
-      "Add this path after your EB url example: /filterimage?image_url=https://d20vrrgs8k4bvw.cloudfront.net/images/open-graph/udacity.png"
+      "Add this path after your EB url example: /filteredimage?image_url=https://d20vrrgs8k4bvw.cloudfront.net/images/open-graph/udacity.png"
     );
   });
 
