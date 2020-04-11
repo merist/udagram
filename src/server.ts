@@ -17,7 +17,7 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
   // Displays a simple message to the user
   /**************************************************************************** */
   app.get("/filteredimage", async (req, res) => {
-    const imageUrl = req.query.image_url;
+    const imageUrl: string = req.query.image_url;
 
     // check if imageUrl is invalid and return a message to the user
     if (!imageUrl) {
