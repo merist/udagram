@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
@@ -16,7 +16,7 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
   // Filetr image endpoint
   // Displays a simple message to the user
   /**************************************************************************** */
-  app.get("/filteredimage", async (req, res) => {
+  app.get("/filteredimage", async (req: Request, res: Response) => {
     const imageUrl: string = req.query.image_url;
 
     // check if imageUrl is invalid and return a message to the user
