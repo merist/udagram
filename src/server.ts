@@ -13,16 +13,16 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
   app.use(bodyParser.json());
   /**************************************************************************** */
 
-  // Root Endpoint
+  // Filetr image endpoint
   // Displays a simple message to the user
   /**************************************************************************** */
-  app.get("/filteredimage", async (req, res) => {
+  app.get("/filterimage", async (req, res) => {
     const imageUrl = req.query.image_url;
 
-    // check imageUrl is valid
+    // check if imageUrl is invalid and return a message to the user
     if (!imageUrl) {
       return res.status(400).send({
-        message: "The image url is required or malformed",
+        message: "The image url cannot be found",
       });
     }
 
@@ -32,14 +32,15 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
         deleteLocalFiles([filteredImageFromURL])
       );
     } catch (error) {
-      res.sendStatus(422).send("Unable to process image at the provided url");
+      res
+        .sendStatus(422)
+        .send("Failed to filter the image from the current url");
     }
   });
 
-  // Root Endpoint
-  // Displays a simple message to the user
+  // Displays a simple message to the user to add the correct path in order to filter the image
   app.get("/", async (req, res) => {
-    res.send("try GET /filteredimage?image_url={{}}");
+    res.send("Add this path after your EB url: /filterimage?image_url=url");
   });
 
   // Start the Server
