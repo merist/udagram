@@ -40,7 +40,9 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
   // Displays a simple message to the user to add the correct path in order to filter the image
   app.get("/", async (req, res) => {
-    res.send("Add this path after your EB url: /filterimage?image_url=url");
+    res.send(
+      "Add this path after your EB url example: /filterimage?image_url=https://d20vrrgs8k4bvw.cloudfront.net/images/open-graph/udacity.png"
+    );
   });
 
   // Start the Server
